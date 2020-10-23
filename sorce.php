@@ -11,7 +11,7 @@ require "Models/drink.php";
 $api_url = "http://api.burgerfirefly.com/v2/old-orders";
 $headers = array(
     "Content-Type: application/json",
-    "Authorization: Bearer eIDVARbbGj6yDNyKVbiwVVbEm2BCQFcS62GqwRGs",
+    "Authorization: Bearer 9UgAoSno8nrMFnV8rBen33P_N99COfRw5X1kGsgP",
 );
 
 $results = CallAPI('get', $api_url, $headers, false);
@@ -80,7 +80,6 @@ if ($object instanceof stdClass) {
         }
     }
 }
-
 
 $db = new SQLite3('app.sq3');
 $sql = "INSERT INTO  [dbo].[SalesOrderMaster] (
