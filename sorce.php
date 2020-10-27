@@ -81,20 +81,25 @@ if ($object instanceof stdClass) {
     }
 }
 
-$db = new SQLite3('app.sq3');
-$sql = "INSERT INTO  [dbo].[SalesOrderMaster] (
+
+try{
+    $db = new SQLite3('app.sq3');
+    $sql = "INSERT INTO  [dbo].[SalesOrderMaster] (
 INV_NO,INV_PAYNO,INV_DATE,INV_CUSNO,INV_STONO,INV_ORDDATE,INV_NOTE,INV_TTOTAL,INV_GTOTAL,INV_USENO,INV_CURRENCY,INV_RATE,
 INV_COSNO,INV_CASH,INV_CHEQ,INV_TBLNO,INV_ORDTYP,INV_CHARGES,INV_ORIG,INV_DESPER,INV_STOTAL,INV_DTOTAL,INV_ORDNO,INV_CLOSED,
 INV_NOTE2,INV_PRINTED,INV_NO2,INV_ACCNO,INV_EMP,INV_STATUS) VALUES )
 1,1,'2020-10-18 17:17:17', 'test',1,'2020-10-18 17:17:17','test',11.6,11.6,1,1,11.6,1,11.6,11.6,1,1,11.6,'1',11.6,11.6,11.6,
 1,'a','test', 'a', 'test','test','test','test','test','test',1)";
-$result = $db->exec($sql);
-if($result){
-    unset($db);
-    echo "DONE ....... \n";
-}else{
-    echo $db->lastErrorMsg() . "\n";
-    unset($db);
+    $result = $db->exec($sql);
+    if($result){
+        unset($db);
+        echo "DONE ....... \n";
+    }else{
+        echo $db->lastErrorMsg() . "\n";
+        unset($db);
+    }
+}catch(Exception $exception){
+    print_r($exception->getMessage());
 }
 
 
